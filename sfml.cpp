@@ -1,9 +1,21 @@
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 int main()
 {
     // create the window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Bubble Sort");
+
+    // Create vector of rectangles
+    std::vector<sf::RectangleShape> rectangles;
+
+    // create and configure rectangles
+    for (int i = 0; i < 5; ++i) {
+        sf::RectangleShape rectangle(sf::Vector2f(5.f, 250.f));
+        rectangle.setFillColor(sf::Color(100, 250, 50));
+        rectangle.setPosition(100.f * i, 355.f);
+        rectangles.push_back(rectangle);
+    }
 
     // run the program as long as the window is open
     while (window.isOpen())
@@ -20,16 +32,10 @@ int main()
         // clear the window with black color
         window.clear(sf::Color::Black);
 
-        // Create the object
-        // define a 120x50 rectangle
-        sf::RectangleShape rectangle(sf::Vector2f(10.f, 180.f));
-
-        // set the shape color to green
-        rectangle.setFillColor(sf::Color(100, 250, 50));
-
         // draw everything here...
-        // window.draw(...);
-        window.draw(rectangle);
+        for (const auto& rectangle : rectangles) {
+            window.draw(rectangle);
+        }
 
         // end the current frame
         window.display();
