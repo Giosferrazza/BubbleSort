@@ -20,8 +20,15 @@ int main()
         // clear the window with black color
         window.clear(sf::Color::Black);
 
+        // Create the object
+        sf::CircleShape shape(50.f);
+
+        // set the shape color to green
+        shape.setFillColor(sf::Color(100, 250, 50));
+
         // draw everything here...
         // window.draw(...);
+        window.draw(shape);
 
         // end the current frame
         window.display();
